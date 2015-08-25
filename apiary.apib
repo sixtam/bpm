@@ -1,0 +1,515 @@
+FORMAT: 1A
+
+
+
+# bpm
+
+BPM API.
+
+# BPM API Root [/rest/bpm/kb/v1]
+
+This resource does not have any attributes. Instead it offers the initial
+API affordances in the form of the links in the JSON body.
+
+It is recommend to follow the “url” link values,
+[Link](https://tools.ietf.org/html/rfc5988) or Location headers where
+applicable to retrieve resources. Instead of constructing your own URLs,
+to keep your client decoupled from implementation details.
+
+## Retrieve the available resources [GET]
+
++ Response 200 (application/json; charset=utf-8)
+        
+        {
+            "tasks_url": "/tasks"
+        }
+
+
+# Group Federated Systems
+Information about federated systems.
+
+## Systems [/rest/bpm/kb/v1/systems]
+
++ Attributes (object)
+    + federationResult (array[Federation Result], required)
+    + systems (array[Federated System], required)
+
+### Systems [GET]
+
+Use this method to retrieve metadata for one or more federated IBM BPM systems. The attributes that are returned for each system depend on the system type.
+
+
++ Request (application/json)
+    + Attributes (Systems)
++ Response 200 (application/json)
+
++ Request Example (application/json)
++ Response 200 (application/json)
+
+        {
+        "federationResult": [
+            {
+                "indexRefreshInterval": 1000,
+                "id": "bpm85eiplf1",
+                "statusCode": 200,
+                "taskCompletionUrlPrefix": "https://vnvrh687.sos.kb.cz:10402/teamworks",
+                "restUrlPrefix": "https://vnvrh687.sos.kb.cz:10402/rest/bpm/wle",
+                "systemType": "SYSTEM_TYPE_WLE",
+                "indexName": "bpm85eiplf1",
+                "systemID": "d025037a-372b-42c2-ab87-72e3cc9c4bd5",
+                "version": "8.5.6.0"
+            },
+            {
+                "indexRefreshInterval": 1000,
+                "id": "wmtbpel1",
+                "statusCode": 200,
+                "taskCompletionUrlPrefix": "http://vnnrh662.sos.kb.cz:10401/rest/bpm/htm",
+                "restUrlPrefix": "http://vnnrh662.sos.kb.cz:10401/rest/bpm/htm",
+                "systemType": "SYSTEM_TYPE_WPS",
+                "indexName": "wmtbpel1",
+                "systemID": "_PK:9023014d.add80b66.5f8ef9f5.5c730000",
+                "version": "8.5.5.0"
+            }
+        ],
+        "systems": [
+            {
+                "systemID": "d025037a-372b-42c2-ab87-72e3cc9c4bd5",
+                "systemType": "SYSTEM_TYPE_WLE",
+                "version": "8.5.6.0",
+                "groupWorkItemsEnabled": false,
+                "resources": [
+                    "tasks",
+                    "taskTemplates",
+                    "processes"
+                ],
+                "taskHistoryEnabled": false,
+                "buildLevel": "BPM8560-20150304-164853",
+                "substitutionEnabled": false,
+                "workBasketsEnabled": false,
+                "substitutionManagementRestrictedToAdministrators": false,
+                "businessCategoriesEnabled": false,
+                "taskSearchEnabled": true,
+                "notificationWebMessagingEnabled": false,
+                "taskListWebMessagingEnabled": false,
+                "apiVersion": "1.0",
+                "supports": null,
+                "hostname": "brm-ibm-poc.kb.cz"
+            },
+            {
+                "systemID": "_PK:9023014d.add80b66.5f8ef9f5.5c730000",
+                "systemType": "SYSTEM_TYPE_WPS",
+                "version": "8.5.5.0",
+                "groupWorkItemsEnabled": false,
+                "resources": [
+                    "tasks",
+                    "taskTemplates",
+                    "escalations",
+                    "workBaskets",
+                    "businessCategories",
+                    "processes",
+                    "processTemplates",
+                    "activities"
+                ],
+                "taskHistoryEnabled": true,
+                "buildLevel": "BPM8550 [20140530-222725.0]",
+                "substitutionEnabled": false,
+                "workBasketsEnabled": false,
+                "substitutionManagementRestrictedToAdministrators": false,
+                "businessCategoriesEnabled": false,
+                "groupCaseSensitivity": "CASE_CONVERSION_NONE",
+                "userCaseSensitivity": "CASE_CONVERSION_NONE",
+                "serverLocale": "en_US"
+            }
+        ]
+        }
+        
+# Group Task List
+
+Resources related to task lists.
+
+## Task Queries [/rest/bpm/kb/v1/tasks/queries]
+
+Returns all supported task queries (task lists)
+
++ Attributes (object)
+    + federationResult (array[Federation Result], required)
+    + items (array[Task Query Item], required)
+    + identifier: name (string, required) Name of the field where unique identifier for Task Query is stored
+    
+
+### Queries [GET]
+
+Currently the only supported task list is 'KB.TASKLIST' which returns tasks for the current user.
+
++ Request (application/json)
++ Response 200 (application/json; charset=utf-8)
+    + Attributes (Task Queries)
+
++ Request Example (application/json)
++ Response 200 (application/json; charset=utf-8)
+
+        {
+            "federationResult": [
+                {
+                    "indexRefreshInterval": 1000,
+                    "id": "bpm85eiplf1",
+                    "statusCode": 200,
+                    "taskCompletionUrlPrefix": "https://vnvrh687.sos.kb.cz:10402/teamworks",
+                    "restUrlPrefix": "https://vnvrh687.sos.kb.cz:10402/rest/bpm/wle",
+                    "systemType": "SYSTEM_TYPE_WLE",
+                    "indexName": "bpm85eiplf1",
+                    "systemID": "d025037a-372b-42c2-ab87-72e3cc9c4bd5",
+                    "version": "8.5.6.0"
+                },
+                {
+                    "indexRefreshInterval": 1000,
+                    "id": "wmtbpel1",
+                    "statusCode": 200,
+                    "taskCompletionUrlPrefix": "http://vnnrh662.sos.kb.cz:10401/rest/bpm/htm",
+                    "restUrlPrefix": "http://vnnrh662.sos.kb.cz:10401/rest/bpm/htm",
+                    "systemType": "SYSTEM_TYPE_WPS",
+                    "indexName": "wmtbpel1",
+                    "systemID": "_PK:9023014d.add80b66.5f8ef9f5.5c730000",
+                    "version": "8.5.5.0"
+                }
+            ],
+            "items": [
+                {
+                    "authorizationType": "INSTANCE_BASED",
+                    "kind": "FEDERATED",
+                    "entityTypeName": "TASK",
+                    "systemIDs": [
+                        "d025037a-372b-42c2-ab87-72e3cc9c4bd5",
+                        "_PK:9023014d.add80b66.5f8ef9f5.5c730000"
+                    ],
+                    "locales": [
+                        "zh",
+                        "tr",
+                        "sv",
+                        "ru",
+                        "ro",
+                        "pl",
+                        "no",
+                        "nb",
+                        "ko",
+                        "ja",
+                        "default",
+                        "en",
+                        "ar",
+                        "cs",
+                        "da",
+                        "de",
+                        "el",
+                        "es",
+                        "fi",
+                        "fr",
+                        "iw",
+                        "hu",
+                        "it",
+                        "zh_TW",
+                        "pt_BR"
+                    ],
+                    "name": "IBM.DEFAULTALLTASKSLIST_75",
+                    "description": "This is the default tasks list. Define custom tasks lists to show selected business data.",
+                    "displayName": "All",
+                    "keyAttribute": "TASK.TKIID"
+                }
+            ],
+            "identifier": "name"
+        }
+
+
+
+## KB Task List [/rest/bpm/kb/v1/tasks/query/{queryName}{?systemID,selectedAttributes,interactionFilter,queryFilter,searchFilter,processAppName,sortAttributes,offset,size}]
+
+Returns tasks based on specified parameters.
+
++ Parameters
+    + queryName: KB.TASKLIST (string, required) - Unique identifier of Task Query
+    + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (string, optional) - The ID of a federated IBM BPM system. Use the ID to filter the results for a specific federated system. 
+    + selectedAttributes: string (string, optional) - Comma-separated list of attributes that are to be retrieved by the query.
+    + interactionFilter (enum, optional) - Name of a predefined user interaction filter.
+        + `WORK_ON` - Work on tasks. Returns tasks that are claimed by the current user. Tasks in suspended process instances are excluded. 
+        + `ASSESS_AVAILABLE` - Assess available tasks. Returns tasks that can be claimed by the current user. Tasks in suspended process instances are excluded. 
+        + `ASSESS_AND_WORK_ON` - `Assess and work on tasks. Returns tasks from the WORK_ON and the ASSESS_AVAILABLE filters.`
+        + `CHECK_COMPLETED` - Completed tasks. Returns tasks which were completed by the current user. 
+        + `BROWSE_ALL` - All tasks that the current user can claim, work on, or completed. Tasks in suspended process instances are included.
+            This is the default value for the interactionFilter if none is specified.
+
+    + queryFilter: string (string, optional) - 
+    + searchFilter: string (string, optional) - 
+    + processAppName: string (string, optional) - 
+    + sortAttributes: string (string, optional) - 
+    + offset: 25 (number, optional) - integer of how to offset
+    + size: 100 (number, optional) - number of returned results
+    
++ Attributes
+    + entityTypeName (enum, required)
+        + TASK (string)
+    + federationResult (array[Federation Result], required) 
+    + totalCount: 69 (number, required)
+    + items (array[Task List Item], required)
+    + query: `KB.TASKLIST` (string, required)
+    + attributeInfo (array[Attribute Info], required)
+    + requestedSize: 25 (number, required),
+    + offset: 0 (number, required)
+    + identifier: `TASK.TKIID`(string, required)
+    + size: 25 (number, required)
+    
+    
+
+### Queries tasks for the current user [GET]
+
++ Request (application/json)
++ Response 200 (application/json; charset=utf-8)
+    + Attributes (KB Task List)
+    
+  
+# Group Task
+
+## Task details [/rest/bpm/kb/v1/task/{taskID}{?systemID,action}]
++ Parameters
+    + taskID: string (required, string) - ID of the Task, TKIID.
+    + systemID: string (required, string) - ID of the system the task belongs to.
+
+### Get Task Details  [GET]
+
++ Response 200 (application/json; charset=utf-8)
+
+        {
+            status:"200",
+            data:
+            {
+                activationTime:"2014-06-23T20:39:47Z",
+                atRiskTime:"2014-06-23T20:39:47Z",
+                clientTypes:
+                    [
+                    "IBM_WLE_Coach"
+                    ],
+                completionTime:"2014-06-23T20:39:47Z",
+                containmentContextID:"54",
+                description:"",
+                displayName:"Step: Send escalation notice",
+                dueTime:"2014-06-23T20:39:47Z",
+                isAtRisk:true,
+                kind:"KIND_PARTICIPATING",
+                lastModificationTime:"2014-06-23T20:39:47Z",
+                name:"Send escalation notice",
+                originator:"admind",
+                owner:"admind",
+                priority:30,
+                startTime:"2014-06-23T20:39:47Z",
+                state:"STATE_FINISHED",
+                tkiid:"150",
+                piid:"54",
+                processInstanceName:"Standard Employee Requisition for Tim Horton (Standard HR Open New Position)",
+            }
+        }
+
+# Group Task Action
+
+Work In Progress
+    
+## Assign task to me [POST /rest/bpm/kb/v1/task/{taskID}?systemID={systemID}&action=assign&toMe=true&parts=actions]
++ Parameters
+    + taskID: 459 (required, string) - ID of the Task, TKIID.
+    + systemID: string (required, string) - ID of the system to retreive tasks from
+    + action: assign (required, string) - Action to be performed for the specified task instance.
+    + toMe: boolean (required, boolean)
+    + parts: actions (required, string)
++ Request
+
+        {
+            
+        }
++ Response 201
+
+        {
+            "TAD_DISPLAY_NAME": "Step: Zpracovat žádost",
+            "AT_RISK_TIME": "2015-07-16T14:32:43Z",
+            "STATE": "STATE_CLAIMED",
+            "NAME": "Zpracovat žádost",
+            "SNAPSHOT_NAME": null,
+            "PRIORITY": 30,
+            "SNAPSHOT_ID": "2064.b79ee3a4-ff2f-4a41-a1fe-d2be6b48a9ae",
+            "DUE": "2015-07-16T14:49:28Z",
+            "STATUS": "Received",
+            "PI_DISPLAY_NAME": null,
+            "OWNER": "A09V9S",
+            "CONTAINMENT_CTX_ID": "458",
+            "PROCESS_INSTANCE.PIID": "458",
+            "PI_PIID": "458",
+            "TAD_DESCRIPTION": "Step: Zpracovat žádost",
+            "PI_NAME": "Prodej spotřebitelského úvěru:458",
+            "TKIID": "158",
+            "ORIGINATOR": "deadmin",
+            "IS_AT_RISK": true,
+            "PROCESS_APP_ACRONYM": "CONLOAN",
+            "systemID": "d025037a-372b-42c2-ab87-72e3cc9c4bd5",
+            "ACTIVATED": "2015-07-16T13:49:28Z",
+            "TASK.TKIID": "459",
+            "COMPLETED": null,
+            "KIND": "KIND_PARTICIPATING",
+            "PT_PTID": "25.0f9cbb9d-ae0d-4f88-aeb9-04ba8c2f65e3",
+            "ASSIGNED_TO_ROLE_DISPLAY_NAME": null,
+            "claimURL": "https://brm-ibm-poc.kb.cz/teamworks/process.lsw?zWorkflowState=1&zTaskId=158&zResetContext=true"
+        }
+
++ Request
+
+        {
+        
+        }
+        
++ Response 200
+
+        {
+        
+        }
+
+## Task Actions [/rest/bpm/kb/v1/task/actions{?taskIDs,actions}]
+
+Work In Progress
+
++ Parameters
+    + taskIDs: string (required, string) - A comma-separated list of IDs of human tasks for which available actions should be returned.
+    + actions: string (optional, string) - A comma-separated list of actions the caller is interested in, used as a filter for the response. If not specified then information about all possible actions is returned. See the task actions response description below for a list of possible values.
+
+### List of task actions [GET]
+List of actions that can be performed on task instances (TaskActions complexType).    
++ Response 200 (application/json; charset=utf-8)
+
+        {
+            status: "200",
+            data:
+            {
+                identifier: "tkiid",
+                tasks:
+                [
+                    { 
+                        tkiid: "150",
+                        actions:
+                        [
+                          "ACTION_CANCELCLAIM", 
+                          "ACTION_CLAIM", 
+                          "ACTION_COMPLETE",
+                          "ACTION_CREATEMESSAGE", 
+                          "ACTION_GETTASK", 
+                          "ACTION_GETUISETTINGS", 
+                          "ACTION_UPDATEDUEDATE", 
+                          "ACTION_UPDATEPRIORITY", 
+                          "ACTION_REASSIGNTOUSER", 
+                          "ACTION_REASSIGNTOGROUP", 
+                          "ACTION_VIEW_TASK"
+                        ]
+                    }
+                ]
+            }
+        }
+
+
+# Data Structures
+
+
+## Federation Result (object)
++ indexRefreshInterval: `1000` (number, required)
++ id: `bpm85eiplf1` (string, required)
++ statusCode: `200` (number, required)
++ taskCompletionUrlPrefix: `https://vnvrh687.sos.kb.cz:10402/teamworks`(string, required)
++ restUrlPrefix: `https://vnvrh687.sos.kb.cz:10402/rest/bpm/wle`(string, required)
++ systemType (enum, required)
+    + `SYSTEM_TYPE_WLE`
+    + `SYSTEM_TYPE_WPS`
++ indexName: `bpm85eiplf1` (string, required)
++ systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (string, required)
++ version: `8.5.6.0` (string, required)
+
+## Task Query Item (object)
++ authorizationType: `INSTANCE_BASED` (string, required)
++ kind (enum, required)
+    + `FEDERATED` (string)
++ entityTypeName (enum, required)
+    + `TASK` (string)
++ systemIDs (array, required) - List of system IDs
+    + `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (string)
+    + `PK:9023014d.add80b66.5f8ef9f5.5c730000` (string)
++ locales (array, required) - Supported locales
+    + `default` (string)
+    + en (string)
+    + cs (string)
++ name (enum, required)
+    + KB.TASKLIST (string, required)
++ description: `This is the default KB tasks list. Define custom tasks lists to show selected business data.` (string, required)
++ displayName: `All` (string, required)
++ keyAttribute: `TASK.TKIID` (string, required)
+
+## Attribute Info (object)
++ content: `task.invokedinstanceid.key` (string, required)
++ sourceAttribute: `task.invokedinstanceid.key` (string, required)
++ name: `INVOKED_INSTANCE_ID` (string, required)
++ sourceQueryTableIdentifier: `n/a` (string, required)
++ type: `string` (string, required)
++ isArray: `false` (boolean, required)
+
+
+
+## Task List Item (object)
++ DUE: `2014-05-05T01:06:40Z` (string, required)
++ ACTIVATED (string, required)
++ AT_RISK_TIME (string, required)
++ IS_AT_RISK (boolean, required)
++ STATE (enum, required)
++ NAME (string, required)
++ ORIGINATOR (string, required)
++ PRIORITY (number, required)
++ PRIORITY_NAME (enum, required)
++ TKIID (string, required)
++ TASK.TKIID (string, required)
++ STATUS (string, required)
++ OWNER (string, required)
++ ASSIGNED_TO_ROLE_DISPLAY_NAME (string, required)
++ TAD_DISPLAY_NAME (string, required)
++ TAD_DESCRIPTION (string, required)
++ PI_PIID (string) (string, required)
++ PI_NAME (string) (string, required)
++ systemID (string, required)
++ PROCESS_APP_ACRONYM (string, optional)
++ PROCESS_DOMAIN (string, optional)
+
+## Federated System (object)
++ systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (string, optional) - ID of the system that is described by this object.
++ systemType (enum) - Type of the system that is described by this object.
+    + SYSTEM_TYPE_WLE (string)
+    + SYSTEM_TYPE_WPS (string)
++ version: 8.5.6.0 (string) - Version of the system that is described by this object.
++ buildLevel: `BPM8560-20150304-164853` (string) - Build level of the system that is described by this object.
++ groupWorkItemsEnabled: false (boolean) - States whether group work items can be used.
++ substitutionEnabled: false (boolean) - States whether substitution is enabled.
++ substitutionManagementRestrictedToAdministrators: false  (boolean) - States whether substitution management is restricted to administrators.
++ taskHistoryEnabled: false (boolean) - States whether the collection of task history events is enabled.
++ workBasketsEnabled: false (boolean) - States whether work baskets are enabled.
++ businessCategoriesEnabled: false (boolean) - States whether business categories are enabled.
++ taskSearchEnabled: true (boolean) - States whether task searches are enabled.
++ notificationWebMessagingEnabled: false (boolean) - States whether notifications are enabled.
++ taskListWebMessagingEnabled: false (boolean) - States whether task list auto refresh is enabled.
++ apiVersion: `1.0` (string) - A string indicating the version of the BPM REST API.
++ supports (array[string]) - List of features the API supports.
++ resources (enum) - List of supported resource types.
+    + tasks
+    + taskTemplates
+    + processes
+    + escalations
+    + workBaskets
+    + businessCategories
+    + processes
+    + processTemplates
+    + activities
++ hostName: `brm-ibm-poc.kb.cz` (string) - Hostname of the system that is described by this object.
++ serverLocale: `en_US` (string, optional)
+
+
+
+
+
+
+
