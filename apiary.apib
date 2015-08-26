@@ -259,20 +259,101 @@ Returns tasks based on specified parameters.
     
 
 ### Queries tasks for the current user [GET]
-
-+ Request (application/json)
-+ Response 200 (application/json; charset=utf-8)
-    + Attributes (KB Task List)
     
 + Request (application/json)
 + Response 200 (application/json; charset=utf-8)
 
         {
-
-
+        "entityTypeName": "TASK",
+        "federationResult": [
+        {
+            "indexRefreshInterval": 1000,
+            "id": "bpm85eiplf1",
+            "statusCode": 200,
+            "taskCompletionUrlPrefix": "https://vnvrh687.sos.kb.cz:10402/teamworks",
+            "restUrlPrefix": "https://vnvrh687.sos.kb.cz:10402/rest/bpm/wle",
+            "systemType": "SYSTEM_TYPE_WLE",
+            "indexName": "bpm85eiplf1",
+            "systemID": "d025037a-372b-42c2-ab87-72e3cc9c4bd5",
+            "version": "8.5.6.0"
+        },
+        {
+            "indexRefreshInterval": 1000,
+            "id": "wmtbpel1",
+            "statusCode": 200,
+            "taskCompletionUrlPrefix": "http://vnnrh662.sos.kb.cz:10401/rest/bpm/htm",
+            "restUrlPrefix": "http://vnnrh662.sos.kb.cz:10401/rest/bpm/htm",
+            "systemType": "SYSTEM_TYPE_WPS",
+            "indexName": "wmtbpel1",
+            "systemID": "_PK:9023014d.add80b66.5f8ef9f5.5c730000",
+            "version": "8.5.5.0"
         }
-    
-
+         ],
+        "totalCount": 2,
+        "items": [
+        {
+            "dueTime": "2014-05-05T01:06:40Z",
+            "activationTime": "2015-06-26T09:54:59Z",
+            "isAtRisk": true,
+            "atRiskTime": "2015-06-26T09:54:59Z",
+            "state": "STATE_READY",
+            "name": "HT120",
+            "displayName": "Zpracovat žádost",
+            "originator": "deadmin",
+            "priority": 30,
+            "priorityName": "Normal",
+            "tkiid": "671",
+            "TASK.TKIID": "671",
+            "status": "New_or_Received",
+            "owner": "A3KOMA",
+            "assignedToDisplayName": "New Team 3",
+            "description": null,
+            "piid": "561",
+            "processInstanceName": "Assign Based on Filter Service",
+            "systemID": "d025037a-372b-42c2-ab87-72e3cc9c4bd5"
+            },
+            {
+            "dueTime": "2014-05-05T01:06:40Z",
+            "activationTime": "2015-06-26T09:54:59Z",
+            "isAtRisk": true,
+            "atRiskTime": "2015-06-26T09:54:59Z",
+            "state": "STATE_READY",
+            "name": "HT120",
+            "displayName": "Zpracovat žádost",
+            "originator": "deadmin",
+            "priority": 30,
+            "priorityName": "Normal",
+            "tkiid": "_TKI:3Aa01b014f.6a1e4ac6.5d8ef9f5.3a890a19",
+            "TASK.TKIID": "_TKI:3Aa01b014f.6a1e4ac6.5d8ef9f5.3a890a19",
+            "status": "New_or_Received",
+            "owner": "A3KOMA",
+            "assignedToDisplayName": "New Team 3",
+            "description": null,
+            "piid": "561",
+            "processInstanceName": "Assign Based on Filter Service",
+            "systemID": "d025037a-372b-42c2-ab87-72e3cc9c4bd5"
+        }
+        ],
+        "query": "KB.TASKLIST",
+        "attributeInfo": [
+        {
+            "content": "task.invokedinstanceid.key",
+            "sourceAttribute": "task.invokedinstanceid.key",
+            "name": "INVOKED_INSTANCE_ID",
+            "sourceQueryTableIdentifier": "n/a",
+            "type": "string",
+            "isArray": false
+        }
+        ],
+        "requestedSize": 25,
+        "offset": 0,
+        "identifier": "TASK.TKIID",
+        "size": 25
+        }
+   
++ Request (application/json)
++ Response 200 (application/json; charset=utf-8)
+    + Attributes (KB Task List)
     
   
 # Group Task
