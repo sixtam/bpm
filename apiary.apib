@@ -454,26 +454,29 @@ List of actions that can be performed on task instances (TaskActions complexType
 
 
 ## Task List Item (object)
-+ dueTime: `2014-05-05T01:06:40Z` (string, required)
-+ activationTime (string, required)
-+ atRiskTime (string, required)
-+ isAtRisk (boolean, required)
-+ state (enum, required)
-+ NAME (string, required)
-+ originator (string, required)
-+ priority (number, required)
-+ priorityName (enum, required)
-+ tkiid (string, required)
-+ TASK.TKIID (string, required)
-+ status (string, required)
-+ owner (string, required)
-+ assignedToDisplayName (string, required)
-+ displayName (string, required)
-+ description (string, required)
-+ piid (string) (string, required)
-+ processInstanceName (string) (string, required)
-+ systemID (string, required)
-+ PROCESS_APP_ACRONYM (string, optional)
++ dueTime: `2014-05-05T01:06:40Z` (string, required) - The time when the task is due
++ activationTime: `2015-06-26T09:54:59Z` (string, required) - The creation time of the task
++ isAtRisk: true (boolean, required) - States whether the task is at risk
++ atRiskTime: `2015-06-26T09:54:59Z` (string, required) - TODO
++ state (enum, required) - The state of the task
+    + `STATE_READY` (string) - The task is ready to be worked on
+    + `STATE_CLAIMED` (string) - The task is claimed by an user
+    + `STATE_FINISHED` (string) - The task is finished
++ name: HT120 (string, required) - Technical name of the task
++ displayName: `Zpracovat žádost` (string, required) - Name of the task to be displayed in UI
++ originator: deadmin (string, required) - TODO
++ priority: 30 (number, required) - Numeric value of the task priority
++ priorityName: Normal (enum, required) - Human readable name of the priority class
++ tkiid: 671 (string, required) - Id of the task
++ TASK.TKIID: 671 (string, required) - Id of the task
++ status: Received (enum, required) - Status of the task
++ owner: A3KOMA (string, required) - ID of the user who claimed the task, null otherwise 
++ assignedToDisplayName: New Team 3 (string, required) - TODO
++ description (string, optional)
++ piid: 561 (string, required) - ID of the process instance
++ processInstanceName: Assign Based on Filter Service (string, required) - Name of the process instance to be displayed
++ systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (string, required) - ID of the system the task belongs to.
+
 
 
 ## Federated System (object)
