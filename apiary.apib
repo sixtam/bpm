@@ -264,6 +264,16 @@ Returns tasks based on specified parameters.
 + Response 200 (application/json; charset=utf-8)
     + Attributes (KB Task List)
     
++ Request (application/json)
++ Response 200 (application/json; charset=utf-8)
+
+        {
+
+
+        }
+    
+
+    
   
 # Group Task
 
@@ -469,7 +479,28 @@ List of actions that can be performed on task instances (TaskActions complexType
 + priorityName: Normal (enum, required) - Human readable name of the priority class
 + tkiid: 671 (string, required) - Id of the task
 + TASK.TKIID: 671 (string, required) - Id of the task
-+ status: Received (enum, required) - Status of the task
++ status (enum, required) - Status of the task
+    + `New_or_Received`
+    + `Followed`
+    + `Replied`
+    + `Actioned`
+    + `Help_Request`
+    + `New` 
+    + `Forwarded`
+    + `Closed`
+    + `Special`
+    + `Comment`
+    + `Answered_Help_Request`
+    + `Tagged`
+    + `Ignored_Help_Request`
+    + `Received`
+    + `Deleted`
+    + `Collaboration`
+    + `Sent`
+    + `Alert`
+
+
+
 + owner: A3KOMA (string, required) - ID of the user who claimed the task, null otherwise 
 + assignedToDisplayName: New Team 3 (string, required) - TODO
 + description (string, optional)
