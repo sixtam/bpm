@@ -615,6 +615,7 @@ List of actions that can be performed on task instances (TaskActions complexType
 ## Task List Item (object)
 + dueTime: `2014-05-05T01:06:40Z` (string, required) - The time when the task is due
 + activationTime: `2015-06-26T09:54:59Z` (string, required) - The creation time of the task
++ completionTime: `2015-06-27T09:54:59Z` (string, required) - The completion time of the task
 + isAtRisk: true (boolean, required) - States whether the task is at risk
 + atRiskTime: `2015-06-26T09:54:59Z` (string, required) - TODO
 + state (enum, required) - The state of the task
@@ -648,7 +649,7 @@ List of actions that can be performed on task instances (TaskActions complexType
     + `Sent`
     + `Alert`
 + owner: A3KOMA (string, required) - ID of the user who claimed the task, null otherwise 
-+ assignedToRoleDisplayName: New Team 3 (string, required) - TODO
++ assignedToRoleDisplayName: New Team 3 (string, required) - The display name of the group the task is assigne to, null if the task is claimed
 + description (string, optional)
 + piid: 561 (string, required) - ID of the process instance
 + processInstanceName: Assign Based on Filter Service (string, required) - Name of the process instance to be displayed
