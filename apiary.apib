@@ -356,6 +356,74 @@ Returns tasks based on specified parameters.
     + Attributes (KB Task List)
     
   
+# Group Launchable Entities
+
+## Launchable Entities /rest/bpm/federated/v1/launchableEntities{?includeServiceSubtypes,excludeDashboardDuplicates,includeSystemTypes,systemID}
+
+### Get Launchable Entities [GET]
+
++ Response 200 (application/json; charset=utf-8)
+        {
+            "federationResult": [
+                {
+                    "statusCode": 200,
+                    "id": "bpm85eiplf1",
+                    "indexRefreshInterval": 1000,
+                    "taskCompletionUrlPrefix": "https://vnvrh687.sos.kb.cz:10402/teamworks",
+                    "restUrlPrefix": "https://vnvrh687.sos.kb.cz:10402/rest/bpm/wle",
+                    "systemType": "SYSTEM_TYPE_WLE",
+                    "indexName": "bpm85eiplf1",
+                    "systemID": "d025037a-372b-42c2-ab87-72e3cc9c4bd5",
+                    "version": "8.5.6.0"
+                }
+            ],
+            "items": [
+                {
+                    "snapshotID": "2064.05ac3517-d400-4059-8bc3-aac9c069c2a8",
+                    "itemID": "25.78c1a8c3-e207-45ab-9700-3d9e6d5cf579",
+                    "systemType": "SYSTEM_TYPE_WLE",
+                    "processAppName": "Hiring Sample",
+                    "isMobileReady": false,
+                    "launchableEntityType": "PROCESS",
+                    "snapshotCreatedOn": "2015-06-30T14:04:23Z",
+                    "display": "NarrativeTestingProcess",
+                    "type": "process",
+                    "startURL": "https://vnvrh687.sos.kb.cz:10402/rest/bpm/wle/v1/process?action=start&bpdId=25.78c1a8c3-e207-45ab-9700-3d9e6d5cf579&branchId=2063.1a52abd6-b068-4f9e-91a9-ded9793eb34e",
+                    "tip": true,
+                    "processAppID": "2066.9ab0d0c6-d92c-4355-9ed5-d8a05acdc4b0",
+                    "branchID": "2063.1a52abd6-b068-4f9e-91a9-ded9793eb34e",
+                    "isDefault": false,
+                    "itemReference": "/25.78c1a8c3-e207-45ab-9700-3d9e6d5cf579",
+                    "ID": "2015.294",
+                    "branchName": "Main",
+                    "systemID": "d025037a-372b-42c2-ab87-72e3cc9c4bd5",
+                    "processAppAcronym": "HSS"
+                },
+                {
+                    "snapshotID": "2064.b6891ab2-e94a-414e-a8eb-d51b03779ece",
+                    "itemID": "1.be989f55-74be-48f4-99a4-474ff2203e12",
+                    "systemType": "SYSTEM_TYPE_WLE",
+                    "processAppName": "Consumer Loan",
+                    "isMobileReady": false,
+                    "launchableEntityType": "SERVICE",
+                    "snapshotCreatedOn": "2015-08-26T12:32:34Z",
+                    "display": "Report prodeje",
+                    "type": "service",
+                    "startURL": "https://vnvrh687.sos.kb.cz:10402/teamworks/executeServiceByName?processApp=CONLOAN&serviceName=Report+prodeje&branchId=2063.7f30ffee-528f-46eb-b93e-cbb97647523e&zResumable=true",
+                    "tip": true,
+                    "processAppID": "2066.ddee3d07-a4f8-4f20-b664-4143a1a2ea59",
+                    "branchID": "2063.7f30ffee-528f-46eb-b93e-cbb97647523e",
+                    "isDefault": false,
+                    "subtype": "dashboard",
+                    "itemReference": "/1.be989f55-74be-48f4-99a4-474ff2203e12",
+                    "ID": "2015.125",
+                    "branchName": "Main",
+                    "systemID": "d025037a-372b-42c2-ab87-72e3cc9c4bd5",
+                    "processAppAcronym": "CONLOAN"
+                }
+            ]
+        }
+
 # Group Task
 
 ## Task details [/rest/bpm/kb/v1/task/{taskID}{?systemID,action}]
