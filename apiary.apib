@@ -653,16 +653,22 @@ List of actions that can be performed on task instances (TaskActions complexType
 + piid: 561 (string, required) - ID of the process instance
 + processInstanceName: Assign Based on Filter Service (string, required) - Name of the process instance to be displayed
 + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (string, required) - ID of the system the task belongs to.
-
-+ bd.BRTitle.string ( string, optional) - Business Request title. Only for WMT Tasks. Used in similar way as Process Instance Name.
-+ bd.CLKBID.long (number, required) - KB ID of the person/company.
-+ bd.CLFirstName.string (string, required) - First name of the person. If null, just dont display.
-+ bd.CLSearchName.string (string, required) - Last name of person or company name. It may happen that first name is available for company.
-+ bd.CLICBirthNumber.string (string, required) - Birth Number of the person or Company ID.
-+ bd.CLCorporate.long (number, required) - Is the company from Corporate segment?
-+ bd.CaseType.string (string, required) - Type of the case.
-+ bd.bussinessProcessInput_businessRequestId (number, required) - Business Request ID.
-+ bd.bussinessProcessInput_businessSubRequestId (number, required) - Business SubRequest ID.
++ bd.clientID.long (number, required) - KB ID of the person/company.
++ bd.clientFirstName.string (string, required) - First name of the person. If null, just dont display.
++ bd.clientSearchName.string (string, required) - Last name of person or company name. It may happen that first name is available for company.
++ bd.clientICBirthNumber.long (number, required) - Birth Number of the person or Company ID.
++ bd.clientIsCorporate.long (number, required) - Is the company from Corporate segment?
++ bd.requestId.long (number, required) - The request ID of the client.
++ bd.accountNumber.long (number, required) - The account number of the client.
++ bd.caseID.long (number, required) - The case ID of the business request.
++ bd.caseType.string (string, required) - Type of the case.
++ bd.businessRequestExpiration.date (string, required) - Expiration time of the business request.
++ bd.businessRequestCreatedOn.date (string, required) - The creation time of the business request.
++ bd.businessRequestIsDocNeeded.long (number, required) - States whether documentation is needed for the business request.
++ bd.businessRequestIsDocAttached.long (number, required) - States whether documentation is attached with the business request.
++ bd.businessRequestTitle.string (string, optional) - TODO: use taskDisplayName instead.Business Request title. Only for WMT Tasks. Used in similar way as Process Instance Name.
++ bd.businessRequestId.long (number, required) - Business Request ID.
++ bd.businessSubRequestId.long (number, required) - Business SubRequest ID.
 
 ## Federated System (object)
 + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (string, optional) - ID of the system that is described by this object.
