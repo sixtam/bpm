@@ -427,13 +427,14 @@ Returns tasks based on specified parameters.
 
 # Group Task
 
-## Task details [/rest/bpm/kb/v1/task/{taskID}{?systemID,action}]
+## Task details [/rest/bpm/kb/v1/task/{taskID}{?systemID}]
 + Parameters
     + taskID: string (required, string) - ID of the Task, TKIID.
     + systemID: string (required, string) - ID of the system the task belongs to.
 
-### Get Task Details  [GET]
+### Get Task Details [GET]
 
++ Request (application/json)
 + Response 200 (application/json; charset=utf-8)
 
         {
@@ -460,28 +461,35 @@ Returns tasks based on specified parameters.
                 priority:30,
                 startTime:"2014-06-23T20:39:47Z",
                 state:"STATE_FINISHED",
+                status:"Closed"
                 tkiid:"150",
                 piid:"54",
                 processInstanceName:"Standard Employee Requisition for Tim Horton (Standard HR Open New Position)",
+                assignedTo: "A3KOMA",
+                assignedToDisplayName: "PERFORMANCE ALENA",
+                assignedToType: "user",
+                "claimURL": "https://bpm-uat2.kb.cz/fe/?sequence=0.fmid=FEAK;0.faid=navigator;0.operation=hide;1.fmid=tasksLap;1.faid=showHumanTaskDetailAction;1.htTKIID=_TKI%3Aa01b014f.6a1e4ac6.5d8ef9f5.3a890a19"
+                
             }
         }
 
-# Group Task Action
+# Group Task Instance
 
-Work In Progress
     
-## Assign task to me [POST /rest/bpm/kb/v1/task/{taskID}?systemID={systemID}&action=assign&toMe=true&parts=actions]
+## Assign task to me [POST /rest/bpm/kb/v1/task/{taskID}?systemID={systemID,action,toMe,parts}]
 + Parameters
     + taskID: 459 (required, string) - ID of the Task, TKIID.
     + systemID: string (required, string) - ID of the system to retreive tasks from
-    + action: assign (required, string) - Action to be performed for the specified task instance.
+    + action (required, enum) - Action to be performed for the specified task instance.
+        + assign (string) - Assign the specified task to the current user, to another user, to a group, or back to the original task owner, depending on the specified options. Note that exactly one of the parameters "toMe", "back", "toUser", and "toGroup" should be specified in addition to this parameter.
     + toMe: boolean (required, boolean)
-    + parts: actions (required, string)
-+ Request
-
-        {
-            
-        }
+    + parts (required, enum)
+        + data (data) - External task information.
+        + actions (string)
+        + all (string) - Default
+        + none (string)
+        
++ Request (application/json)
 + Response 201
 
         {
@@ -512,28 +520,18 @@ Work In Progress
             "KIND": "KIND_PARTICIPATING",
             "PT_PTID": "25.0f9cbb9d-ae0d-4f88-aeb9-04ba8c2f65e3",
             "ASSIGNED_TO_ROLE_DISPLAY_NAME": null,
-            "claimURL": "https://bpm-uat2.kb.cz/fe/?sequence=0.fmid=FEAK;0.faid=navigator;0.operation=hide;1.fmid=tasksLap;1.faid=showHumanTaskDetailAction;1.htTKIID=_TKI%3Aa01b014f.6a1e4ac6.5d8ef9f5.3a890a19"
+            "taskURL": "https://bpm-uat2.kb.cz/fe/?sequence=0.fmid=FEAK;0.faid=navigator;0.operation=hide;1.fmid=tasksLap;1.faid=showHumanTaskDetailAction;1.htTKIID=_TKI%3Aa01b014f.6a1e4ac6.5d8ef9f5.3a890a19"
         }
 
-+ Request
 
-        {
-        
-        }
-        
-+ Response 200
+# Group Task Actions
 
-        {
-        
-        }
-
-## Task Actions [/rest/bpm/kb/v1/task/actions{?taskIDs,actions}]
-
-Work In Progress
+## Task Actions [/rest/bpm/kb/v1/task/actions{?taskID,systemID,actions}]
 
 + Parameters
-    + taskIDs: string (required, string) - A comma-separated list of IDs of human tasks for which available actions should be returned.
-    + actions: string (optional, string) - A comma-separated list of actions the caller is interested in, used as a filter for the response. If not specified then information about all possible actions is returned. See the task actions response description below for a list of possible values.
+    + taskID: 904 (required, string) - A comma-separated list of IDs of human tasks for which available actions should be returned.
+    + systemID (required, string) - TODO
+    + actions (optional, string) - A comma-separated list of actions the caller is interested in, used as a filter for the response.
 
 ### List of task actions [GET]
 List of actions that can be performed on task instances (TaskActions complexType).    
@@ -611,7 +609,7 @@ List of actions that can be performed on task instances (TaskActions complexType
 + type: `string` (string, required)
 + isArray: `false` (boolean, required)
 
-
+## Task Detail (object)
 
 ## Task List Item (object)
 + dueTime: `2014-05-05T01:06:40Z` (string, required) - The time when the task is due
