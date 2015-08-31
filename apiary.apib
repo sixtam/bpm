@@ -438,36 +438,36 @@ Returns tasks based on specified parameters.
 + Response 200 (application/json; charset=utf-8)
 
         {
-            status:"200",
-            data:
+            "status":"200",
+            "data":
             {
-                activationTime:"2014-06-23T20:39:47Z",
-                atRiskTime:"2014-06-23T20:39:47Z",
-                clientTypes:
+                "activationTime":"2014-06-23T20:39:47Z",
+                "atRiskTime":"2014-06-23T20:39:47Z",
+                "clientTypes":
                     [
                     "IBM_WLE_Coach"
                     ],
-                completionTime:"2014-06-23T20:39:47Z",
-                containmentContextID:"54",
-                description:"",
-                displayName:"Step: Send escalation notice",
-                dueTime:"2014-06-23T20:39:47Z",
-                isAtRisk:true,
-                kind:"KIND_PARTICIPATING",
-                lastModificationTime:"2014-06-23T20:39:47Z",
-                name:"Send escalation notice",
-                originator:"admind",
-                owner:"admind",
-                priority:30,
-                startTime:"2014-06-23T20:39:47Z",
-                state:"STATE_FINISHED",
-                status:"Closed"
-                tkiid:"150",
-                piid:"54",
-                processInstanceName:"Standard Employee Requisition for Tim Horton (Standard HR Open New Position)",
-                assignedTo: "A3KOMA",
-                assignedToDisplayName: "PERFORMANCE ALENA",
-                assignedToType: "user",
+                "completionTime":"2014-06-23T20:39:47Z",
+                "containmentContextID":"54",
+                "description":"",
+                "displayName":"Step: Send escalation notice",
+                "dueTime":"2014-06-23T20:39:47Z",
+                "isAtRisk":true,
+                "kind":"KIND_PARTICIPATING",
+                "lastModificationTime":"2014-06-23T20:39:47Z",
+                "name":"Send escalation notice",
+                "originator":"admind",
+                "owner":"admind",
+                "priority":30,
+                "startTime":"2014-06-23T20:39:47Z",
+                "state":"STATE_FINISHED",
+                "status":"Closed"
+                "tkiid":"150",
+                "piid":"54",
+                "processInstanceName":"Standard Employee Requisition for Tim Horton (Standard HR Open New Position)",
+                "assignedTo": "A3KOMA",
+                "assignedToDisplayName": "PERFORMANCE ALENA",
+                "assignedToType": "user",
                 "claimURL": "https://bpm-uat2.kb.cz/fe/?sequence=0.fmid=FEAK;0.faid=navigator;0.operation=hide;1.fmid=tasksLap;1.faid=showHumanTaskDetailAction;1.htTKIID=_TKI%3Aa01b014f.6a1e4ac6.5d8ef9f5.3a890a19"
                 
             }
@@ -476,7 +476,7 @@ Returns tasks based on specified parameters.
 # Group Task Instance
 
     
-## Assign task to me [POST /rest/bpm/kb/v1/task/{taskID}?systemID={systemID,action,toMe,parts}]
+## Assign task [POST /rest/bpm/kb/v1/task/{taskID}?systemID={systemID,action,toMe,parts}]
 + Parameters
     + taskID: 459 (required, string) - ID of the Task, TKIID.
     + systemID: string (required, string) - ID of the system to retreive tasks from
