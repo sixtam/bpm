@@ -468,7 +468,7 @@ Returns tasks based on specified parameters.
                 "assignedTo": "A3KOMA",
                 "assignedToDisplayName": "PERFORMANCE ALENA",
                 "assignedToType": "user",
-                "claimURL": "https://bpm-uat2.kb.cz/fe/?sequence=0.fmid=FEAK;0.faid=navigator;0.operation=hide;1.fmid=tasksLap;1.faid=showHumanTaskDetailAction;1.htTKIID=_TKI%3Aa01b014f.6a1e4ac6.5d8ef9f5.3a890a19"
+                "taskURL": "https://bpm-uat2.kb.cz/fe/?sequence=0.fmid=FEAK;0.faid=navigator;0.operation=hide;1.fmid=tasksLap;1.faid=showHumanTaskDetailAction;1.htTKIID=_TKI%3Aa01b014f.6a1e4ac6.5d8ef9f5.3a890a19"
                 
             }
         }
@@ -490,37 +490,42 @@ Returns tasks based on specified parameters.
         + none (string)
         
 + Request (application/json)
-+ Response 201
++ Response 200
 
         {
-            "TAD_DISPLAY_NAME": "Step: Zpracovat žádost",
-            "AT_RISK_TIME": "2015-07-16T14:32:43Z",
-            "STATE": "STATE_CLAIMED",
-            "NAME": "Zpracovat žádost",
-            "SNAPSHOT_NAME": null,
-            "PRIORITY": 30,
-            "SNAPSHOT_ID": "2064.b79ee3a4-ff2f-4a41-a1fe-d2be6b48a9ae",
-            "DUE": "2015-07-16T14:49:28Z",
-            "STATUS": "Received",
-            "PI_DISPLAY_NAME": null,
-            "OWNER": "A09V9S",
-            "CONTAINMENT_CTX_ID": "458",
-            "PROCESS_INSTANCE.PIID": "458",
-            "PI_PIID": "458",
-            "TAD_DESCRIPTION": "Step: Zpracovat žádost",
-            "PI_NAME": "Prodej spotřebitelského úvěru:458",
-            "TKIID": "158",
-            "ORIGINATOR": "deadmin",
-            "IS_AT_RISK": true,
-            "PROCESS_APP_ACRONYM": "CONLOAN",
-            "systemID": "d025037a-372b-42c2-ab87-72e3cc9c4bd5",
-            "ACTIVATED": "2015-07-16T13:49:28Z",
-            "TASK.TKIID": "459",
-            "COMPLETED": null,
-            "KIND": "KIND_PARTICIPATING",
-            "PT_PTID": "25.0f9cbb9d-ae0d-4f88-aeb9-04ba8c2f65e3",
-            "ASSIGNED_TO_ROLE_DISPLAY_NAME": null,
-            "taskURL": "https://bpm-uat2.kb.cz/fe/?sequence=0.fmid=FEAK;0.faid=navigator;0.operation=hide;1.fmid=tasksLap;1.faid=showHumanTaskDetailAction;1.htTKIID=_TKI%3Aa01b014f.6a1e4ac6.5d8ef9f5.3a890a19"
+            "status":"200",
+            "data":
+            {
+                "activationTime":"2014-06-23T20:39:47Z",
+                "atRiskTime":"2014-06-23T20:39:47Z",
+                "clientTypes":
+                    [
+                    "IBM_WLE_Coach"
+                    ],
+                "completionTime":"2014-06-23T20:39:47Z",
+                "containmentContextID":"54",
+                "description":"",
+                "displayName":"Step: Send escalation notice",
+                "dueTime":"2014-06-23T20:39:47Z",
+                "isAtRisk":true,
+                "kind":"KIND_PARTICIPATING",
+                "lastModificationTime":"2014-06-23T20:39:47Z",
+                "name":"Send escalation notice",
+                "originator":"admind",
+                "owner":"admind",
+                "priority":30,
+                "startTime":"2014-06-23T20:39:47Z",
+                "state":"STATE_FINISHED",
+                "status":"Closed"
+                "tkiid":"150",
+                "piid":"54",
+                "processInstanceName":"Standard Employee Requisition for Tim Horton (Standard HR Open New Position)",
+                "assignedTo": "A3KOMA",
+                "assignedToDisplayName": "PERFORMANCE ALENA",
+                "assignedToType": "user",
+                "taskURL": "https://bpm-uat2.kb.cz/fe/?sequence=0.fmid=FEAK;0.faid=navigator;0.operation=hide;1.fmid=tasksLap;1.faid=showHumanTaskDetailAction;1.htTKIID=_TKI%3Aa01b014f.6a1e4ac6.5d8ef9f5.3a890a19"
+                
+            }
         }
 
 
