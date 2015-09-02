@@ -437,29 +437,23 @@ Returns tasks based on specified parameters.
 + Request (application/json)
 + Response 200 (application/json; charset=utf-8)
 
-        {
+         {
             "status":"200",
             "data":
             {
                 "activationTime":"2014-06-23T20:39:47Z",
                 "atRiskTime":"2014-06-23T20:39:47Z",
-                "clientTypes":
-                    [
-                    "IBM_WLE_Coach"
-                    ],
                 "completionTime":"2014-06-23T20:39:47Z",
-                "containmentContextID":"54",
                 "description":"",
                 "displayName":"Step: Send escalation notice",
                 "dueTime":"2014-06-23T20:39:47Z",
                 "isAtRisk":true,
-                "kind":"KIND_PARTICIPATING",
                 "lastModificationTime":"2014-06-23T20:39:47Z",
                 "name":"Send escalation notice",
                 "originator":"admind",
                 "owner":"admind",
                 "priority":30,
-                "startTime":"2014-06-23T20:39:47Z",
+                "priorityName": "Normal",
                 "state":"STATE_FINISHED",
                 "status":"Closed"
                 "tkiid":"150",
@@ -468,6 +462,20 @@ Returns tasks based on specified parameters.
                 "assignedTo": "A3KOMA",
                 "assignedToDisplayName": "PERFORMANCE ALENA",
                 "assignedToType": "user",
+                "actions":
+                        [
+                          "ACTION_CANCELCLAIM", 
+                          "ACTION_CLAIM", 
+                          "ACTION_COMPLETE",
+                          "ACTION_CREATEMESSAGE", 
+                          "ACTION_GETTASK", 
+                          "ACTION_GETUISETTINGS", 
+                          "ACTION_UPDATEDUEDATE", 
+                          "ACTION_UPDATEPRIORITY", 
+                          "ACTION_REASSIGNTOUSER", 
+                          "ACTION_REASSIGNTOGROUP", 
+                          "ACTION_VIEW_TASK"
+                        ],
                 "taskURL": "https://bpm-uat2.kb.cz/fe/?sequence=0.fmid=FEAK;0.faid=navigator;0.operation=hide;1.fmid=tasksLap;1.faid=showHumanTaskDetailAction;1.htTKIID=_TKI%3Aa01b014f.6a1e4ac6.5d8ef9f5.3a890a19"
                 
             }
@@ -476,18 +484,13 @@ Returns tasks based on specified parameters.
 # Group Task Instance
 
     
-## Assign task [POST /rest/bpm/kb/v1/task/{taskID}?systemID={systemID,action,toMe,parts}]
+## Assign task [POST /rest/bpm/kb/v1/task/{taskID}?systemID={systemID,action,toMe}]
 + Parameters
     + taskID: 459 (required, string) - ID of the Task, TKIID.
     + systemID: string (required, string) - ID of the system to retreive tasks from
     + action (required, enum) - Action to be performed for the specified task instance.
         + assign (string) - Assign the specified task to the current user, to another user, to a group, or back to the original task owner, depending on the specified options. Note that exactly one of the parameters "toMe", "back", "toUser", and "toGroup" should be specified in addition to this parameter.
     + toMe: boolean (required, boolean)
-    + parts (required, enum)
-        + data (data) - External task information.
-        + actions (string)
-        + all (string) - Default
-        + none (string)
         
 + Request (application/json)
 + Response 200
@@ -498,23 +501,17 @@ Returns tasks based on specified parameters.
             {
                 "activationTime":"2014-06-23T20:39:47Z",
                 "atRiskTime":"2014-06-23T20:39:47Z",
-                "clientTypes":
-                    [
-                    "IBM_WLE_Coach"
-                    ],
                 "completionTime":"2014-06-23T20:39:47Z",
-                "containmentContextID":"54",
                 "description":"",
                 "displayName":"Step: Send escalation notice",
                 "dueTime":"2014-06-23T20:39:47Z",
                 "isAtRisk":true,
-                "kind":"KIND_PARTICIPATING",
                 "lastModificationTime":"2014-06-23T20:39:47Z",
                 "name":"Send escalation notice",
                 "originator":"admind",
                 "owner":"admind",
                 "priority":30,
-                "startTime":"2014-06-23T20:39:47Z",
+                "priorityName": "Normal",
                 "state":"STATE_FINISHED",
                 "status":"Closed"
                 "tkiid":"150",
@@ -523,6 +520,20 @@ Returns tasks based on specified parameters.
                 "assignedTo": "A3KOMA",
                 "assignedToDisplayName": "PERFORMANCE ALENA",
                 "assignedToType": "user",
+                "actions":
+                        [
+                          "ACTION_CANCELCLAIM", 
+                          "ACTION_CLAIM", 
+                          "ACTION_COMPLETE",
+                          "ACTION_CREATEMESSAGE", 
+                          "ACTION_GETTASK", 
+                          "ACTION_GETUISETTINGS", 
+                          "ACTION_UPDATEDUEDATE", 
+                          "ACTION_UPDATEPRIORITY", 
+                          "ACTION_REASSIGNTOUSER", 
+                          "ACTION_REASSIGNTOGROUP", 
+                          "ACTION_VIEW_TASK"
+                        ],
                 "taskURL": "https://bpm-uat2.kb.cz/fe/?sequence=0.fmid=FEAK;0.faid=navigator;0.operation=hide;1.fmid=tasksLap;1.faid=showHumanTaskDetailAction;1.htTKIID=_TKI%3Aa01b014f.6a1e4ac6.5d8ef9f5.3a890a19"
                 
             }
