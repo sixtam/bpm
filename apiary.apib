@@ -485,14 +485,16 @@ Returns tasks based on specified parameters.
 # Group Task Instance
 
     
-## Assign task [POST /rest/bpm/kb/v1/task/{taskID}?systemID={systemID,action,toMe,back}]
+## Assign task [POST /rest/bpm/kb/v1/task/{taskID}{?systemID,action,toMe,back}]
+At least on of toMe, back request parameters should be specified. If both are specified the values must differ.
+
 + Parameters
     + taskID: 459 (required, string) - ID of the Task, TKIID.
     + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (required, string) - ID of the system to retreive tasks from
-    + action (required, enum) - Action to be performed for the specified task instance.
+    + action: assign (required, enum) - Action to be performed for the specified task instance.
         + assign (string) - Assign the specified task to the current user, to another user, to a group, or back to the original task owner, depending on the specified options. Note that exactly one of the parameters "toMe", "back", "toUser", and "toGroup" should be specified in addition to this parameter.
-    + toMe: true (required, boolean) - TODO
-    + back: false (required, boolean) - TODO
+    + toMe: true (optional, boolean) - If specified as "true" then the task is assigned to the current user.
+    + back: false (optional, boolean) - If specified as "true" then the task is assigned back to the original owner.
         
 + Request (application/json)
 + Response 200
