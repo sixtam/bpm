@@ -360,6 +360,24 @@ Returns tasks based on specified parameters.
 
 ## Launchable Entities [/rest/bpm/federated/v1/launchableEntities{?includeServiceSubtypes,excludeDashboardDuplicates,includeSystemTypes,systemID}]
 
+Use this resource to provide a federated launch list. The list includes entities from all the federated IBM BPM systems.
+
++ Parameters
+    + includeServiceSubtypes (enum, optional) - A comma-separated list of service subtypes that are to be included in the result set
+    
+        `For example, to include url and startable_service service subtypes, specify: includeServiceSubtypes=startable_service,url. If this parameter is not specified, all the service subtypes are included in the result set.`
+        
+        + startable_service
+        + url
+        + dashboard
+    + excludeDashboardDuplicates: false (boolean, optional)
+        If dashboard services from duplicate snapshots are found on multiple federated IBM BPM systems, all copies of the dashboard are returned by default. The user can then see the non-federated dashboard content for each federated system. If you set the value of the parameter to true, duplicate copies of the dashboard are excluded. The default value of the parameter is false. 
+    + includeSystemTypes (enum, optional) - This parameter determines which system types are returned in the result set. 
+        + ALL - default
+        + `SYSTEM_TYPE_WLE`
+        + `SYSTEM_TYPE_WPS`
+    + systemID (string, optional) - If the systemID parameter is present and it matches the systemID of a federated IBM BPM system, data is returned from this system only
+
 ### Get Launchables [GET]
 
 + Response 200 (application/json; charset=utf-8)
