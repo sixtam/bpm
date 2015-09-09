@@ -568,7 +568,7 @@ At least on of toMe, back request parameters should be specified. If both are sp
 ## Task Actions [/rest/bpm/kb/v1/task/actions{?taskID,systemID,actions}]
 
 + Parameters
-    + taskID: 904 (required, string) - A comma-separated list of IDs of human tasks for which available actions should be returned.
+    + taskID: string (required, string) - ID of the Task, TKIID.
     + systemID (required, string) - TODO
     + actions (optional, string) - A comma-separated list of actions the caller is interested in, used as a filter for the response.
 
@@ -601,6 +601,76 @@ List of actions that can be performed on task instances (TaskActions complexType
                         ]
                     }
                 ]
+            }
+        }
+
+## Update Task Priority [/rest/bpm/wle/v1/task/{taskID}{?systemID,action,priority,parts}]
+
++ Parameters
+    + taskID: 904 (required, string) - A comma-separated list of IDs of human tasks for which available actions should be returned.
+    + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (string, optional) - The ID of a federated IBM BPM system. Use the ID to filter the results for a specific federated system. 
+    + action: update (required, enum) - Action to be performed for the specified task instance.
+    + priority: High (required, enum) - Value of priority.
+    + parts: actions (required, enum) - Set of data result.
+
+### Update Priority [PUT]
+Update task priority to specified value.
++ Response 200 (application/json; charset=utf-8)
+
+        {
+            "status": "200",
+            "data": {
+                "activationTime": "2015-09-08T13:00:12Z",
+                "atRiskTime": "2015-09-08T13:26:49Z",
+                "clientTypes": [
+                    "IBM_WLE_Coach"
+                ],
+                "completionTime": null,
+                "containmentContextID": "1322",
+                "description": "",
+                "displayName": "Step: Zpracovat žádost",
+                "isAtRisk": true,
+                "kind": "KIND_PARTICIPATING",
+                "lastModificationTime": "2015-09-08T13:00:37Z",
+                "originator": "deadmin",
+                "priority": 20,
+                "startTime": "2015-09-08T13:00:12Z",
+                "state": "STATE_CLAIMED",
+                "piid": "1322",
+                "processInstanceName": "Prodej spotřebitelského úvěru:1322",
+                "priorityName": "High",
+                "externalActivitySnapshotID": null,
+                "serviceID": "1.c872bff2-8a0f-41b0-836f-dc3ba2779eb0",
+                "serviceSnapshotID": "2064.90d313be-a009-47d1-9a06-e0e6b25053c9",
+                "flowObjectID": "bpdid:9b8f4cda16524d91:eb1694c:14277a1fbe1:-7f26",
+                "nextTaskId": null,
+                "collaboration": {
+                    "status": false,
+                    "currentUsers": []
+                },
+                "actions": [
+                    "ACTION_GETTASK",
+                    "ACTION_GETUISETTINGS",
+                    "ACTION_CREATEMESSAGE",
+                    "ACTION_VIEW_TASK",
+                    "ACTION_VIEW_TASK_DETAILS",
+                    "ACTION_CANCELCLAIM",
+                    "ACTION_COMPLETE",
+                    "ACTION_SETOUTPUTMESSAGE",
+                    "ACTION_INVITE",
+                    "ACTION_UPDATEDUEDATE",
+                    "ACTION_UPDATEPRIORITY",
+                    "ACTION_REASSIGNTOUSER",
+                    "ACTION_REASSIGNTOGROUP"
+                ],
+                "tkiid": "1327",
+                "name": "Zpracovat žádost",
+                "status": "Received",
+                "owner": "A3KOMA",
+                "assignedTo": "A3KOMA",
+                "assignedToDisplayName": "PERFORMANCE ALENA",
+                "assignedToType": "user",
+                "dueTime": "2015-09-08T14:00:12Z"
             }
         }
 
