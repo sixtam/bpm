@@ -16,13 +16,8 @@ It is recommend to follow the “url” link values,
 applicable to retrieve resources. Instead of constructing your own URLs,
 to keep your client decoupled from implementation details.
 
-## Retrieve the available resources [GET]
-
-+ Response 200 (application/json; charset=utf-8)
-        
-        {
-            "tasks_url": "/tasks"
-        }
+## BPM API root [GET]
++ Response 200 (application/json)
 
 
 # Group Federated Systems
@@ -676,7 +671,7 @@ Update task priority to specified value.
 
 # Group Enumerations
 
-## Meta Priority [/search/meta/priority]
+## Meta Priority [/rest/bpm/kb/v1/search/meta/priority]
 
 ### Meta Priority [GET]
 Priority enumeration.
