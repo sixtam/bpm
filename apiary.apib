@@ -763,9 +763,10 @@ Priority enumeration.
 
 # Group Group and Users
 
-## Group [/rest/bpm/kb/v1/group/{groupNameOrID}{?parts,includeDeleted}]
+## Group [/rest/bpm/kb/v1/group/{groupNameOrID}{?systemID,parts,includeDeleted}]
 
 + Parameters
+    + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (required, string) - The ID of a federated IBM BPM system. Use the ID to filter the results for a specific federated system. 
     + groupNameOrID:  1606 (required, string) - A value representing either the groupName or groupID of the desired group.
     + parts: all (optional, string) - A string indicating which parts of the response data should be returned. Valid values are "members", "all" (the default), or "none".
     + includeDeleted: false (optional, boolean) - A flag indicating whether or not group information should be retrieved even if the group is logically deleted. Default is false.
@@ -788,9 +789,10 @@ Group detail.
             }
         }
 
-## User [/rest/bpm/kb/v1/user/{userNameOrID}{?includeInternalMemberships,parts,refreshUser}]
+## User [/rest/bpm/kb/v1/user/{userNameOrID}{?systemID,includeInternalMemberships,parts,refreshUser}]
 
 + Parameters
+    + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (required, string) - The ID of a federated IBM BPM system. Use the ID to filter the results for a specific federated system. 
     + userNameOrID:  A3KOMA (required, string) - A value representing either the userName or userID of the desired user. To retrieve details about the current user, specify "current".
     + includeInternalMemberships:  true (optional, boolean) - If true, includes in the returned list of memberships the internal group membership names that the user belongs to. Defaults to true.
     + parts: all (optional, string) - A string indicating which parts of the response data should be returned. Valid values are "memberships", "all" (the default), or "none".
@@ -860,9 +862,10 @@ User detail.
 
 # Group Process
 
-## Process [/rest/bpm/kb/v1/process{?action,bpdId,snapshotId,branchId,processAppId,params,parts}]
+## Process [/rest/bpm/kb/v1/process{?systemID,action,bpdId,snapshotId,branchId,processAppId,params,parts}]
 
 + Parameters
+    + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (required, string) - The ID of a federated IBM BPM system. Use the ID to filter the results for a specific federated system. 
     + action:  start (required, string) - Start a new instance of a process.
     + bpdId:  `25.8403dd37-e049-46f5-8952-b7a46f0d198f` (required, string) - The id of the Busines Process Definition to be used.
     + snapshotId:  `2064.73dd1d1a-b533-46ef-ba79-c94cb3b0de87` (optional, string) - The id of the snapshot containing the Business Process Definition. One of snapshotId, branchId, or processAppId must be specified. 
