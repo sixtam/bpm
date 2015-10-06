@@ -604,7 +604,7 @@ List of actions that can be performed on task instances (TaskActions complexType
 
 + Parameters
     + taskID:  459 (required, string) - ID of the Task, TKIID.
-    + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (string, optional) - The ID of a federated IBM BPM system. Use the ID to filter the results for a specific federated system. 
+    + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (required, string) - The ID of a federated IBM BPM system. Use the ID to filter the results for a specific federated system. 
     + action: update (required, enum) - Action to be performed for the specified task instance.
     + priority: High (required, enum) - Value of priority.
 
@@ -673,7 +673,7 @@ Update task priority to specified value.
 
 + Parameters
     + taskID:  459 (required, string) - ID of the Task, TKIID.
-    + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (string, optional) - The ID of a federated IBM BPM system. Use the ID to filter the results for a specific federated system. 
+    + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (required, string) - The ID of a federated IBM BPM system. Use the ID to filter the results for a specific federated system. 
     + action: update (required, enum) - Action to be performed for the specified task instance.
     + dueDate: `2015-09-08T14:00:12Z` (required, string) - Value of Due Date.
 
@@ -756,6 +756,103 @@ Priority enumeration.
                     "Normal",
                     "Low",
                     "Lowest"
+                ]
+            }
+        }
+
+
+# Group Group and Users
+
+## Group [/rest/bpm/kb/v1/group/{groupNameOrID}{?parts,includeDeleted}]
+
++ Parameters
+    + groupNameOrID:  1606 (required, string) - A value representing either the groupName or groupID of the desired group.
+    + parts: all (optional, string) - A string indicating which parts of the response data should be returned. Valid values are "members", "all" (the default), or "none".
+    + includeDeleted: false (optional, boolean) - A flag indicating whether or not group information should be retrieved even if the group is logically deleted. Default is false.
+
+### Group [GET]
+Group detail.
++ Response 200 (application/json; charset=utf-8)
+
+        {
+            "status":"200",
+            "data":{
+                "groupID":3,
+                "groupName":"tw_admins",
+                "displayName":"tw_admins",
+                "description":"Group for people with full access to Teamworks.",
+                "members":[
+                    "tw_admin"
+                ],
+                "managerGroupName": "mTeam_T_8d643861-ec74-4877-a18b-0728ad57033e.e0b4a6b9-12eb-4565-8857-831847d11ad9"
+            }
+        }
+
+## User [/rest/bpm/kb/v1/user/{userNameOrID}{?includeInternalMemberships,parts,refreshUser}]
+
++ Parameters
+    + userNameOrID:  A3KOMA (required, string) - A value representing either the userName or userID of the desired user. To retrieve details about the current user, specify "current".
+    + includeInternalMemberships:  true (optional, boolean) - If true, includes in the returned list of memberships the internal group membership names that the user belongs to. Defaults to true.
+    + parts: all (optional, string) - A string indicating which parts of the response data should be returned. Valid values are "memberships", "all" (the default), or "none".
+    + refreshUser: false (optional, boolean) - Refreshes fullname and group memberships of users before retriving them. Only members of the group, that are referred by the action policy "ACTION_REFRESH_USER", can use this function.
+
+### User [GET]
+User detail.
++ Response 200 (application/json; charset=utf-8)
+
+        {
+            "status":"200",
+            "data":{
+                "userID":1,
+                "userName":"tw_admin",
+                "fullName":"Internal TW Admin user",
+                "isDisabled":false,
+                "primaryGroup":null,
+                "emailAddress":null,
+                "userPreferences":{
+                    "Locale":"en"
+                },
+                "tasksCollaboration":["75"],
+                "memberships":[
+                    "Debug",
+                     "tw_admins",
+                     "tw_authors",
+                     "tw_portal_admins",
+                     "tw_process_owners",
+                     "tw_allusers",
+                     "All Users_T_da7e4d23-78cb-4483-98ed-b9c238308a03.40551a86-bac6-474e-a666-85f9a8a83426",
+                     "All Users_S_da7e4d23-78cb-4483-98ed-b9c238308a03.40551a86-bac6-474e-a666-85f9a8a83426",
+                     "All Users_T_da7e4d23-78cb-4483-98ed-b9c238308a03.36c07d6c-ad75-4a42-9675-95275f281c3f",
+                     "Process Owner_T_9a9f919e-6644-4592-b900-3eaa46838454.2e16e361-17b4-49c6-9092-66c6a4ffd8bf",
+                     "Managers_T_eca3397d-df4d-4ea6-a74e-22aaef303e3c.2e16e361-17b4-49c6-9092-66c6a4ffd8bf",
+                     "All Users_T_da7e4d23-78cb-4483-98ed-b9c238308a03.2e16e361-17b4-49c6-9092-66c6a4ffd8bf",
+                     "All Users_S_da7e4d23-78cb-4483-98ed-b9c238308a03.2e16e361-17b4-49c6-9092-66c6a4ffd8bf",
+                     "Process Owner_S_9a9f919e-6644-4592-b900-3eaa46838454.2e16e361-17b4-49c6-9092-66c6a4ffd8bf",
+                     "Managers_S_eca3397d-df4d-4ea6-a74e-22aaef303e3c.2e16e361-17b4-49c6-9092-66c6a4ffd8bf",
+                     "All Users_S_da7e4d23-78cb-4483-98ed-b9c238308a03.64bbda3f-b456-486a-9679-87d81c4366dd",
+                     "Process Owner_S_9a9f919e-6644-4592-b900-3eaa46838454.64bbda3f-b456-486a-9679-87d81c4366dd",
+                     "Managers_S_eca3397d-df4d-4ea6-a74e-22aaef303e3c.64bbda3f-b456-486a-9679-87d81c4366dd",
+                     "HRManagers_T_6615a4b0-fd38-4ea5-8bc0-69d2f107369e.30c63e29-aacd-4b3b-803f-a09ce65486d2",
+                     "HiringManagers_T_cd97937f-06ab-43cc-8067-17dea489fdb3.30c63e29-aacd-4b3b-803f-a09ce65486d2",
+                     "GeneralManagers_T_eb30156e-52c8-4ec5-9be6-02290d02f827.30c63e29-aacd-4b3b-803f-a09ce65486d2",
+                     "All Users_S_da7e4d23-78cb-4483-98ed-b9c238308a03.30c63e29-aacd-4b3b-803f-a09ce65486d2",
+                     "HiringManagers_S_cd97937f-06ab-43cc-8067-17dea489fdb3.30c63e29-aacd-4b3b-803f-a09ce65486d2",
+                     "GeneralManagers_S_eb30156e-52c8-4ec5-9be6-02290d02f827.30c63e29-aacd-4b3b-803f-a09ce65486d2",
+                     "HRManagers_S_6615a4b0-fd38-4ea5-8bc0-69d2f107369e.30c63e29-aacd-4b3b-803f-a09ce65486d2",
+                     "HRManagers_T_129c442a-75a1-4a7f-b7df-53d2c8909981.73dd1d1a-b533-46ef-ba79-c94cb3b0de87",
+                     "GeneralManagers_T_ab886e73-e2ec-4cf4-94a7-0c8dff105001.73dd1d1a-b533-46ef-ba79-c94cb3b0de87",
+                     "HiringManagers_T_e6497638-1592-4d72-b976-2c8579ada550.73dd1d1a-b533-46ef-ba79-c94cb3b0de87",
+                     "All Users_T_da7e4d23-78cb-4483-98ed-b9c238308a03.73dd1d1a-b533-46ef-ba79-c94cb3b0de87",
+                     "All Users_S_da7e4d23-78cb-4483-98ed-b9c238308a03.73dd1d1a-b533-46ef-ba79-c94cb3b0de87",
+                     "GeneralManagers_S_ab886e73-e2ec-4cf4-94a7-0c8dff105001.73dd1d1a-b533-46ef-ba79-c94cb3b0de87",
+                     "HRManagers_S_129c442a-75a1-4a7f-b7df-53d2c8909981.73dd1d1a-b533-46ef-ba79-c94cb3b0de87",
+                     "HiringManagers_S_e6497638-1592-4d72-b976-2c8579ada550.73dd1d1a-b533-46ef-ba79-c94cb3b0de87",
+                     "Process Owner_T_7a742398-8ba3-4347-a60f-b21d15ea6bc0.f2472b8c-651f-4cd1-9d95-7bc9d3cbc3b7",
+                     "Managers_T_f319047c-8955-48a1-a6a9-f52d9eaf6f88.f2472b8c-651f-4cd1-9d95-7bc9d3cbc3b7",
+                     "All Users_T_da7e4d23-78cb-4483-98ed-b9c238308a03.f2472b8c-651f-4cd1-9d95-7bc9d3cbc3b7",
+                     "All Users_S_da7e4d23-78cb-4483-98ed-b9c238308a03.f2472b8c-651f-4cd1-9d95-7bc9d3cbc3b7",
+                     "Managers_S_f319047c-8955-48a1-a6a9-f52d9eaf6f88.f2472b8c-651f-4cd1-9d95-7bc9d3cbc3b7",
+                     "Process Owner_S_7a742398-8ba3-4347-a60f-b21d15ea6bc0.f2472b8c-651f-4cd1-9d95-7bc9d3cbc3b7"
                 ]
             }
         }
