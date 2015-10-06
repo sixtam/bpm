@@ -603,7 +603,7 @@ List of actions that can be performed on task instances (TaskActions complexType
 ## Update Task Priority [/rest/bpm/wle/v1/task/{taskID}{?systemID,action,priority}]
 
 + Parameters
-    + taskID: 904 (required, string) - A comma-separated list of IDs of human tasks for which available actions should be returned.
+    + taskID:  459 (required, string) - ID of the Task, TKIID.
     + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (string, optional) - The ID of a federated IBM BPM system. Use the ID to filter the results for a specific federated system. 
     + action: update (required, enum) - Action to be performed for the specified task instance.
     + priority: High (required, enum) - Value of priority.
@@ -672,7 +672,7 @@ Update task priority to specified value.
 ## Update Task Due Date [/rest/bpm/wle/v1/task/{taskID}{?systemID,action,dueDate}]
 
 + Parameters
-    + taskID: 904 (required, string) - A comma-separated list of IDs of human tasks for which available actions should be returned.
+    + taskID:  459 (required, string) - ID of the Task, TKIID.
     + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (string, optional) - The ID of a federated IBM BPM system. Use the ID to filter the results for a specific federated system. 
     + action: update (required, enum) - Action to be performed for the specified task instance.
     + dueDate: `2015-09-08T14:00:12Z` (required, string) - Value of Due Date.
