@@ -669,13 +669,13 @@ Update task priority to specified value.
             }
         }
 
-## Update Task Due DAte [/rest/bpm/wle/v1/task/{taskID}{?systemID,action,dueDate}]
+## Update Task Due Date [/rest/bpm/wle/v1/task/{taskID}{?systemID,action,dueDate}]
 
 + Parameters
     + taskID: 904 (required, string) - A comma-separated list of IDs of human tasks for which available actions should be returned.
     + systemID: `d025037a-372b-42c2-ab87-72e3cc9c4bd5` (string, optional) - The ID of a federated IBM BPM system. Use the ID to filter the results for a specific federated system. 
     + action: update (required, enum) - Action to be performed for the specified task instance.
-    + dueDate: 2015-09-08T14:00:12Z (required, string) - Value of priority.
+    + dueDate: "2015-09-08T14:00:12Z" (required, string) - Value of priority.
 
 ### Update Due Date [PUT]
 Update task Due Date to specified value.
