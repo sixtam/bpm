@@ -856,6 +856,384 @@ User detail.
                 ]
             }
         }
+
+
+# Group Process
+
+## Process [/rest/bpm/kb/v1/process{?action,bpdId,snapshotId,branchId,processAppId,params,parts}]
+
++ Parameters
+    + action:  start (required, string) - Start a new instance of a process.
+    + bpdId:  `25.8403dd37-e049-46f5-8952-b7a46f0d198f` (required, string) - The id of the Busines Process Definition to be used.
+    + snapshotId:  `2064.73dd1d1a-b533-46ef-ba79-c94cb3b0de87` (optional, string) - The id of the snapshot containing the Business Process Definition. One of snapshotId, branchId, or processAppId must be specified. 
+    + branchId:  `2076.931b0053-02bd-4f47-ac72-4eb527457325` (optional, string) - The id of the branch containing the Business Process Definition. If this parameter is specified, then the tip snapshot of the specified branch will be used. One of snapshotId, branchId, or processAppId must be specified. 
+    + processAppId:  `2066.931b0053-02bd-4f47-ac72-4eb527457383` (optional, string) - The id of the process application containing the Business Process Definition. If this parameter is specified, then the tip snapshot of the default branch within the specified process application will be used. One of snapshotId, branchId, or processAppId must be specified. 
+    + params:  `{"orderNumber":"5","customerName":{"firstName":"John","lastName":"Doe"}}` (optional, string) - A string containing a JSON expression that contains one or more input parameter settings. Each of the variables will be set in the context of the running process.
+    + parts:  all (optional, string) - A string indicating which parts of the response data should be returned. Valid values are "header", "dataModel", "diagram", "executionTree", "all" (the default), or "none".
+
+### Process [POST]
+Work with process. Only "Start process" implemented in this time.
+<BR/>Note: In order to identify the correct snapshot to be used, you must specify one of the snapshotId, branchId, or processAppId parameters.
+The snapshot is obtained using the following precedence rules:
+<BR/>1) If the snapshotId parameter is specified, then that specific snapshot will be used, and the branchId and processAppId parameters are ignored.
+<BR/>2) If the branchId parameter is specified, then the tip (current) snapshot of the specified branch (track) will be used, and the processAppId parameter is ignored.
+<BR/>3) If the processAppId parameter is specified, then the tip (current) snapshot of the default branch (track) within that process application will be used.
++ Response 200 (application/json; charset=utf-8)
+
+        {
+   "status":"200",
+   "data":{
+      "creationTime":"2011-04-28T03:20:11Z",
+      "description":"",
+      "executionState":"Active",
+      "state":"STATE_RUNNING",
+      "lastModificationTime":"2011-04-28T03:20:13Z",
+      "name":"Employee Requisition for (53)",
+      "piid":"53",
+      "processTemplateID":"25.8403dd37-e049-46f5-8952-b7a46f0d198f",
+      "processTemplateName":"HR Open New Position",
+      "processAppName":"BPM REST JUNIT TEST MODEL 1",
+      "processAppAcronym":"BPMRES1",
+      "snapshotName":"1.0.1",
+      "snapshotID":"2064.73dd1d1a-b533-46ef-ba79-c94cb3b0de87",
+      "dueDate":"2011-05-12T03:20:11Z",
+      "comments":[
+
+      ],
+      "tasks":[
+         {
+            "activationTime":"2011-04-28T03:20:13Z",
+            "clientTypes":[
+               "IBM_WLE_Coach"
+            ],
+            "completionTime":null,
+            "containmentContextID":"53",
+            "description":"Task: Submit requisition",
+            "displayName":"Task: Submit requisition",
+            "dueTime":"2011-04-28T04:20:12Z",
+            "kind":"KIND_PARTICIPATING",
+            "lastModificationTime":"2011-04-28T03:20:13Z",
+            "name":"Submit job requisition",
+            "originator":"tw_admin",
+            "owner":"tw_user",
+            "priority":30,
+            "startTime":"2011-04-28T03:20:13Z",
+            "state":"STATE_CLAIMED",
+            "tkiid":"53",
+            "piid":"53",
+            "status":"Received",
+            "priorityName":"Normal",
+            "assignedTo":"tw_user",
+            "assignedToType":"user",
+            "data":{
+
+            },
+            "serviceID":"1.0ff035eb-a37b-4f2f-8ca1-7db695410d5d"
+         }
+      ],
+      "documents":[
+
+      ],
+      "data":{
+
+      },
+      "diagram":{
+         "processAppID":"2066.931b0053-02bd-4f47-ac72-4eb527457383",
+         "milestone":null,
+         "step":[
+            {
+               "name":"Ad-hoc Event",
+               "type":"activity",
+               "activityType":"task",
+               "lane":"Ad-hoc Processes",
+               "x":226,
+               "y":31,
+               "color":"Default",
+               "attachedTimer":null,
+               "lines":[
+                  {
+                     "to":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7dfb",
+                     "points":""
+                  }
+               ],
+               "tokenID":null,
+               "taskID":null,
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7e04"
+            },
+            {
+               "name":"End Ad-hoc Event",
+               "type":"event",
+               "lane":"Ad-hoc Processes",
+               "x":361,
+               "y":34,
+               "color":"Default",
+               "attachedTimer":null,
+               "lines":null,
+               "tokenID":null,
+               "taskID":null,
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7dfb"
+            },
+            {
+               "name":"Start Ad-hoc Event",
+               "type":"event",
+               "lane":"Ad-hoc Processes",
+               "x":117,
+               "y":33,
+               "color":"Default",
+               "attachedTimer":null,
+               "lines":[
+                  {
+                     "to":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7e04",
+                     "points":""
+                  }
+               ],
+               "tokenID":null,
+               "taskID":null,
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7df2"
+            },
+            {
+               "name":"Submit job requisition",
+               "type":"activity",
+               "activityType":"task",
+               "lane":"Hiring Manager",
+               "x":193,
+               "y":30,
+               "color":"Blue",
+               "attachedTimer":null,
+               "lines":[
+                  {
+                     "to":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7dd6",
+                     "points":""
+                  }
+               ],
+               "tokenID":[
+                  "2"
+               ],
+               "taskID":"53",
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7de9"
+            },
+            {
+               "name":"Need GM approval?",
+               "type":"gateway",
+               "lane":"Hiring Manager",
+               "x":325,
+               "y":45,
+               "color":"Default",
+               "attachedTimer":null,
+               "lines":[
+                  {
+                     "to":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7da5",
+                     "points":""
+                  },
+                  {
+                     "to":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7d84",
+                     "points":""
+                  }
+               ],
+               "tokenID":null,
+               "taskID":null,
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7dd6"
+            },
+            {
+               "name":"Start",
+               "type":"event",
+               "lane":"Hiring Manager",
+               "x":10,
+               "y":17,
+               "color":"Default",
+               "attachedTimer":null,
+               "lines":[
+                  {
+                     "to":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7de9",
+                     "points":""
+                  }
+               ],
+               "tokenID":null,
+               "taskID":null,
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7dd5"
+            },
+            {
+               "name":"Submit Timer",
+               "type":"event",
+               "lane":"Hiring Manager",
+               "x":13,
+               "y":117,
+               "color":"Default",
+               "attachedTimer":null,
+               "lines":[
+                  {
+                     "to":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7de9",
+                     "points":""
+                  }
+               ],
+               "tokenID":null,
+               "taskID":null,
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7dc2"
+            },
+            {
+               "name":"Submit Message",
+               "type":"event",
+               "lane":"Hiring Manager",
+               "x":59,
+               "y":50,
+               "color":"Default",
+               "attachedTimer":null,
+               "lines":[
+                  {
+                     "to":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7de9",
+                     "points":""
+                  }
+               ],
+               "tokenID":null,
+               "taskID":null,
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7db9"
+            },
+            {
+               "name":"GM approved?",
+               "type":"gateway",
+               "lane":"General Manager",
+               "x":442,
+               "y":50,
+               "color":"Default",
+               "attachedTimer":null,
+               "lines":[
+                  {
+                     "to":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7d84",
+                     "points":""
+                  },
+                  {
+                     "to":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7d75",
+                     "points":""
+                  }
+               ],
+               "tokenID":null,
+               "taskID":null,
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7da6"
+            },
+            {
+               "name":" Approve/reject requisition",
+               "type":"activity",
+               "activityType":"task",
+               "lane":"General Manager",
+               "x":317,
+               "y":35,
+               "color":"Purple",
+               "attachedTimer":null,
+               "lines":[
+                  {
+                     "to":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7da6",
+                     "points":""
+                  }
+               ],
+               "tokenID":null,
+               "taskID":null,
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7da5"
+            },
+            {
+               "name":"End",
+               "type":"event",
+               "lane":"Human Resources",
+               "x":752,
+               "y":48,
+               "color":"Default",
+               "attachedTimer":null,
+               "lines":null,
+               "tokenID":null,
+               "taskID":null,
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7d91"
+            },
+            {
+               "name":"Find job candidates",
+               "type":"activity",
+               "lane":"Human Resources",
+               "x":618,
+               "y":28,
+               "color":"Yellow",
+               "attachedTimer":null,
+               "lines":[
+                  {
+                     "to":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7d91",
+                     "points":""
+                  }
+               ],
+               "tokenID":null,
+               "taskID":null,
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7d84"
+            },
+            {
+               "name":"Notify hiring manager",
+               "type":"activity",
+               "lane":"System",
+               "x":532,
+               "y":35,
+               "color":"Orange",
+               "attachedTimer":null,
+               "lines":[
+                  {
+                     "to":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7d66",
+                     "points":""
+                  }
+               ],
+               "tokenID":null,
+               "taskID":null,
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7d75"
+            },
+            {
+               "name":"Requisition terminiated",
+               "type":"event",
+               "lane":"System",
+               "x":665,
+               "y":55,
+               "color":"Default",
+               "attachedTimer":null,
+               "lines":null,
+               "tokenID":null,
+               "taskID":null,
+               "ID":"bpdid:23232f55fe1ae6b3:2db5e661:12e6d119f84:-7d66"
+            }
+         ],
+         "lanes":[
+            {
+               "name":"Ad-hoc Processes",
+               "height":140,
+               "system":false
+            },
+            {
+               "name":"Hiring Manager",
+               "height":187,
+               "system":false
+            },
+            {
+               "name":"General Manager",
+               "height":163,
+               "system":false
+            },
+            {
+               "name":"Human Resources",
+               "height":169,
+               "system":false
+            },
+            {
+               "name":"System",
+               "height":140,
+               "system":true
+            }
+         ]
+      },
+      "actions":[
+         "ACTION_VIEW_PROCESS_DIAGRAM",
+         "ACTION_VIEW_PROCESS_AUDIT",
+         "ACTION_ABORT_INSTANCE",
+         "ACTION_CHANGE_CRITICAL_PATH",
+         "ACTION_SUSPEND_INSTANCE",
+         "ACTION_ADD_COMMENT",
+         "ACTION_ADD_HELP_REQUEST",
+         "ACTION_RESPOND_HELP_REQUEST",
+         "ACTION_CHANGE_INSTANCE_DUEDATE"
+      ]
+   }
+}
+
         
 
 # Data Structures
