@@ -498,8 +498,8 @@ Use this resource to provide a federated launch list. The list includes entities
 # Group Task Instance
 
     
-## Assign task [POST /rest/bpm/kb/v1/task/{taskID}{?systemID,action,toMe,back}]
-At least on of toMe, back request parameters should be specified. If both are specified the values must differ.
+## Assign task [POST /rest/bpm/kb/v1/task/{taskID}{?systemID,action,toMe,back,toUser}]
+Just one and only one of toMe, back, toUser request parameters should be specified.
 
 + Parameters
     + taskID: 459 (required, string) - ID of the Task, TKIID.
@@ -508,6 +508,7 @@ At least on of toMe, back request parameters should be specified. If both are sp
         + assign (string) - Assign the specified task to the current user, to another user, to a group, or back to the original task owner, depending on the specified options. Note that exactly one of the parameters "toMe", "back", "toUser", and "toGroup" should be specified in addition to this parameter.
     + toMe: true (optional, boolean) - If specified as "true" then the task is assigned to the current user.
     + back: false (optional, boolean) - If specified as "true" then the task is assigned back to the original owner.
+    + toUser: null (optional, string) - The name of the user to which the task should be assigned. Note that assigning the task using the "toUser" parameter is specifically targeted to assigning the task to another user, not the calling user itself. This operation is subject to authorization control which is distinct from the one applied to the assign "toMe" operation.
         
 + Request (application/json)
 + Response 200
