@@ -1655,10 +1655,10 @@ Just one and only one of toMe, back, toUser request parameters should be specifi
     + toUser: null (optional, string) - The name of the user to which the task should be assigned. Note that assigning the task using the "toUser" parameter is specifically targeted to assigning the task to another user, not the calling user itself. This operation is subject to authorization control which is distinct from the one applied to the assign "toMe" operation.
         
 + Request (application/json)
-+ Response 200
++ Response 201
 
         {
-            "status":"200",
+            "status":"201",
             "data":
             {
                 "activationTime":"2014-06-23T20:39:47Z",
