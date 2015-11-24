@@ -1598,49 +1598,45 @@ Use this resource to provide a federated launch list. The list includes entities
 + Request (application/json)
 + Response 200 (application/json; charset=utf-8)
 
-         {
-            "status":"200",
-            "data":
-            {
-                "activationTime":"2014-06-23T20:39:47Z",
-                "atRiskTime":"2014-06-23T20:39:47Z",
-                "completionTime":"2014-06-23T20:39:47Z",
-                "description":"",
-                "displayName":"Step: Send escalation notice",
-                "dueTime":"2014-06-23T20:39:47Z",
-                "isAtRisk":true,
-                "lastModificationTime":"2014-06-23T20:39:47Z",
-                "name":"Send escalation notice",
-                "originator":"admind",
-                "owner":"admind",
-                "priority":30,
+        {
+            "data": {
+                "actions": [
+                    "ACTION_GETUISETTINGS",
+                    "ACTION_CREATEMESSAGE",
+                    "ACTION_VIEW_TASK",
+                    "ACTION_VIEW_TASK_DETAILS",
+                    "ACTION_CLAIM",
+                    "ACTION_UPDATEDUEDATE",
+                    "ACTION_UPDATEPRIORITY",
+                    "ACTION_REASSIGNTOUSER",
+                    "ACTION_REASSIGNTOGROUP",
+                    "ACTION_GETTASK"
+                ],
+                "taskURL": "https://vnnrh765.sos.kb.cz:10402/teamworks/process.lsw?zWorkflowState=1&zTaskId=579&zResetContext=true",
+                "activationTime": "2015-11-09T09:22:06Z",
+                "atRiskTime": "2015-11-09T10:19:40Z",
+                "completionTime": null,
+                "description": "bla bla test",
+                "displayName": "Zpracovat žádost o úvěr pro clienta 145026121",
+                "isAtRisk": "true",
+                "lastModificationTime": "2015-11-09T09:22:06Z",
+                "originator": "deadmin",
+                "priority": "30",
+                "state": "STATE_READY",
+                "piid": "261",
+                "processInstanceName": "Functional Prototype Process:261",
                 "priorityName": "Normal",
-                "state":"STATE_FINISHED",
-                "status":"Closed",
-                "tkiid":"150",
-                "piid":"54",
-                "processInstanceName":"Standard Employee Requisition for Tim Horton (Standard HR Open New Position)",
-                "assignedTo": "A3KOMA",
-                "assignedToDisplayName": "PERFORMANCE ALENA",
-                "assignedToType": "user",
-                "actions":
-                        [
-                          "ACTION_CANCELCLAIM", 
-                          "ACTION_CLAIM", 
-                          "ACTION_COMPLETE",
-                          "ACTION_CREATEMESSAGE", 
-                          "ACTION_GETTASK", 
-                          "ACTION_GETUISETTINGS", 
-                          "ACTION_UPDATEDUEDATE", 
-                          "ACTION_UPDATEPRIORITY", 
-                          "ACTION_REASSIGNTOUSER", 
-                          "ACTION_REASSIGNTOGROUP", 
-                          "ACTION_VIEW_TASK"
-                        ],
-                "taskURL": "https://bpm-uat2.kb.cz/fe/?sequence=0.fmid=FEAK;0.faid=navigator;0.operation=hide;1.fmid=tasksLap;1.faid=showHumanTaskDetailAction;1.htTKIID=_TKI%3Aa01b014f.6a1e4ac6.5d8ef9f5.3a890a19",
-                "systemID": "d025037a-372b-42c2-ab87-72e3cc9c4bd5"
-                
-            }
+                "tkiid": "579",
+                "name": "Zpracovat žádost na úvěr",
+                "status": "Received",
+                "owner": null,
+                "assignedTo": "H/08eWkBCpy7IAmE0eXRFsO+Bk9tbxuTQtv/PT2WgsA= (12652)",
+                "assignedToDisplayName": "bpm_101049_ROL11",
+                "assignedToType": "group",
+                "dueTime": "2015-11-09T10:22:06Z",
+                "systemID": "880ed96c-709d-45b1-882c-9c23c37f9a5d"
+            },
+            "status": "200"
         }
 
 # Group Task Instance
